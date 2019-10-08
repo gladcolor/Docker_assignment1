@@ -372,7 +372,142 @@ a5adda83fb2f
 0f4305ce72d3
 1095b68abc69
 2e46fcb092eb
+```
 
 
+# Part2
+```
+HuanNing@HuanNing MINGW64 /e/pythondocker
+$ docker build --tag=friendlyhi .
+Sending build context to Docker daemon  6.144kB
+Step 1/7 : FROM python:2.7-slim
+ ---> f462855313cd
+Step 2/7 : WORKDIR /app
+ ---> Using cache
+ ---> 8c9cb1ca3c14
+Step 3/7 : COPY . /app
+ ---> Using cache
+ ---> 5bc0a5824b56
+Step 4/7 : RUN pip install --trusted-host pypi.python.org -r requirements.txt
+ ---> Using cache
+ ---> 8622419fc718
+Step 5/7 : EXPOSE 80
+ ---> Using cache
+ ---> 58266a71feed
+Step 6/7 : ENV NAME World
+ ---> Using cache
+ ---> 7a6d7125ca02
+Step 7/7 : CMD ["python", "app.py"]
+ ---> Using cache
+ ---> 53bd4e2ed69e
+Successfully built 53bd4e2ed69e
+Successfully tagged friendlyhi:latest
+SECURITY WARNING: You are building a Docker image from Windows against a non-Windows Docker host. All files and directories added to build context will have '-rwxr-xr-x' permissions. It is recommended to double check and reset permissions for sensitive files and directories.
 
+HuanNing@HuanNing MINGW64 /e/pythondocker
+$ docker push gladcolor/friendlyhi
+The push refers to repository [docker.io/gladcolor/friendlyhi]
+An image does not exist locally with the tag: gladcolor/friendlyhi
+
+HuanNing@HuanNing MINGW64 /e/pythondocker
+$ docker push friendlyhi
+The push refers to repository [docker.io/library/friendlyhi]
+f609c03614fd: Preparing
+74e5b9271e7e: Preparing
+b2f2935a4fb7: Preparing
+a4f231ef8285: Preparing
+912905f45a34: Preparing
+411e68dbb588: Preparing
+2db44bce66cd: Preparing
+411e68dbb588: Waiting
+2db44bce66cd: Waiting
+denied: requested access to the resource is denied
+
+HuanNing@HuanNing MINGW64 /e/pythondocker
+$ docker stop friendlyhi
+Error response from daemon: No such container: friendlyhi
+
+HuanNing@HuanNing MINGW64 /e/pythondocker
+$ docker container ls
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+
+HuanNing@HuanNing MINGW64 /e/pythondocker
+$ docker image ls
+REPOSITORY             TAG                 IMAGE ID            CREATED             SIZE
+huanning/get-started   part2               53bd4e2ed69e        2 hours ago         148MB
+friendlyhello          latest              53bd4e2ed69e        2 hours ago         148MB
+friendlyhi             latest              53bd4e2ed69e        2 hours ago         148MB
+gladcolor/cheers2019   latest              a777105ac44c        7 days ago          4.01MB
+<none>                 <none>              14d66a79f035        7 days ago          356MB
+python-barcode         latest              13d2ad475916        2 weeks ago         941MB
+<none>                 <none>              f2d8fc311c70        2 weeks ago         941MB
+python                 2.7-slim            f462855313cd        3 weeks ago         137MB
+python                 3                   02d2bb146b3b        3 weeks ago         918MB
+golang                 1.11-alpine         e116d2efa2ab        6 weeks ago         312MB
+hello-world            latest              fce289e99eb9        9 months ago        1.84kB
+
+HuanNing@HuanNing MINGW64 /e/pythondocker
+$ docker push 53bd4e2ed69e
+The push refers to repository [docker.io/library/53bd4e2ed69e]
+An image does not exist locally with the tag: 53bd4e2ed69e
+
+HuanNing@HuanNing MINGW64 /e/pythondocker
+$ docker push 53bd4e2ed69e
+The push refers to repository [docker.io/library/53bd4e2ed69e]
+An image does not exist locally with the tag: 53bd4e2ed69e
+
+HuanNing@HuanNing MINGW64 /e/pythondocker
+$ docker image push 53bd4e2ed69e
+The push refers to repository [docker.io/library/53bd4e2ed69e]
+An image does not exist locally with the tag: 53bd4e2ed69e
+
+HuanNing@HuanNing MINGW64 /e/pythondocker
+$ docker push gladcolor/friendlyhi
+The push refers to repository [docker.io/gladcolor/friendlyhi]
+An image does not exist locally with the tag: gladcolor/friendlyhi
+
+HuanNing@HuanNing MINGW64 /e/pythondocker
+$ docker login
+Authenticating with existing credentials...
+Login Succeeded
+
+HuanNing@HuanNing MINGW64 /e/pythondocker
+$ docker tag friendlyhi gladcolor/get-started:part2
+
+HuanNing@HuanNing MINGW64 /e/pythondocker
+$ docker image ls
+REPOSITORY              TAG                 IMAGE ID            CREATED             SIZE
+huanning/get-started    part2               53bd4e2ed69e        2 hours ago         148MB
+friendlyhello           latest              53bd4e2ed69e        2 hours ago         148MB
+friendlyhi              latest              53bd4e2ed69e        2 hours ago         148MB
+gladcolor/get-started   part2               53bd4e2ed69e        2 hours ago         148MB
+gladcolor/cheers2019    latest              a777105ac44c        7 days ago          4.01MB
+<none>                  <none>              14d66a79f035        7 days ago          356MB
+python-barcode          latest              13d2ad475916        2 weeks ago         941MB
+<none>                  <none>              f2d8fc311c70        2 weeks ago         941MB
+python                  2.7-slim            f462855313cd        3 weeks ago         137MB
+python                  3                   02d2bb146b3b        3 weeks ago         918MB
+golang                  1.11-alpine         e116d2efa2ab        6 weeks ago         312MB
+hello-world             latest              fce289e99eb9        9 months ago        1.84kB
+
+HuanNing@HuanNing MINGW64 /e/pythondocker
+$ docker push gladcolor/get-started:part2
+The push refers to repository [docker.io/gladcolor/get-started]
+f609c03614fd: Preparing
+74e5b9271e7e: Preparing
+b2f2935a4fb7: Preparing
+a4f231ef8285: Preparing
+912905f45a34: Preparing
+411e68dbb588: Preparing
+2db44bce66cd: Preparing
+411e68dbb588: Waiting
+2db44bce66cd: Waiting
+74e5b9271e7e: Pushed
+b2f2935a4fb7: Pushed
+a4f231ef8285: Pushed
+f609c03614fd: Pushed
+411e68dbb588: Pushed
+912905f45a34: Pushed
+2db44bce66cd: Pushed
+part2: digest: sha256:3b6a6fe93a426bc95f764e837118f9107bd1e2455c91bb5d1782122209d73a8f size: 1788
 ```
