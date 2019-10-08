@@ -512,6 +512,9 @@ f609c03614fd: Pushed
 part2: digest: sha256:3b6a6fe93a426bc95f764e837118f9107bd1e2455c91bb5d1782122209d73a8f size: 1788
 ```
 
+
+# Part3
+
 ```
 HuanNing@HuanNing MINGW64 /e/pythondocker
 $ docker swarm init
