@@ -511,3 +511,135 @@ f609c03614fd: Pushed
 2db44bce66cd: Pushed
 part2: digest: sha256:3b6a6fe93a426bc95f764e837118f9107bd1e2455c91bb5d1782122209d73a8f size: 1788
 ```
+
+```
+HuanNing@HuanNing MINGW64 /e/pythondocker
+$ docker swarm init
+Swarm initialized: current node (4wphjhicchau7azj21ken4r6f) is now a manager.
+
+To add a worker to this swarm, run the following command:
+
+    docker swarm join --token SWMTKN-1-50ura87hfyu3yuefxm88twehe4hsc94e535prrapc9831lap9z-6ryu4s7iy8sr2w624qenjlw9x 192.168.65.3:2377
+
+To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
+
+
+HuanNing@HuanNing MINGW64 /e/pythondocker
+$ docker stack deploy -c docker-compose.yml getstartedlab
+Creating network getstartedlab_webnet
+Creating service getstartedlab_web
+
+HuanNing@HuanNing MINGW64 /e/pythondocker
+$ docker service ls
+ID                  NAME                MODE                REPLICAS            IMAGE                         PORTS
+yvny7wyajrac        getstartedlab_web   replicated          5/5                 gladcolor/get-started:part2   *:4000->80/tcp
+
+HuanNing@HuanNing MINGW64 /e/pythondocker
+$ docker stack services getstartedlab
+ID                  NAME                MODE                REPLICAS            IMAGE                         PORTS
+yvny7wyajrac        getstartedlab_web   replicated          5/5                 gladcolor/get-started:part2   *:4000->80/tcp
+
+HuanNing@HuanNing MINGW64 /e/pythondocker
+$ docker service ps getstartedlab_web
+ID                  NAME                  IMAGE                         NODE                DESIRED STATE       CURRENT STATE           ERROR               PORTS
+7zkaes0h8n4d        getstartedlab_web.1   gladcolor/get-started:part2   docker-desktop      Running             Running 3 minutes ago            
+17z9qpxrd9t7        getstartedlab_web.2   gladcolor/get-started:part2   docker-desktop      Running             Running 3 minutes ago            
+nmgycgh2brfh        getstartedlab_web.3   gladcolor/get-started:part2   docker-desktop      Running             Running 3 minutes ago            
+bx5sfmsz4dlh        getstartedlab_web.4   gladcolor/get-started:part2   docker-desktop      Running             Running 3 minutes ago            
+llrlsvqftri0        getstartedlab_web.5   gladcolor/get-started:part2   docker-desktop      Running             Running 3 minutes ago            
+
+HuanNing@HuanNing MINGW64 /e/pythondocker
+$ docker container ls -q
+5edc30661da8
+872baa8e11e4
+7e2d6909ee59
+55fa2e1e8421
+42ff116b7eaa
+eb5133c0e4dd
+
+HuanNing@HuanNing MINGW64 /e/pythondocker
+$ curl -4 http://localhost:4000
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   118  100   118    0     0    139      0 --:--:-- --:--:-- --:--:--   139<h3>Hello World!</h3><b>Hostname:</b> eb5133c0e4dd<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i>
+
+HuanNing@HuanNing MINGW64 /e/pythondocker
+$ curl -4 http://localhost:4000
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   118  100   118    0     0    138      0 --:--:-- --:--:-- --:--:--   138<h3>Hello World!</h3><b>Hostname:</b> eb5133c0e4dd<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i>
+
+HuanNing@HuanNing MINGW64 /e/pythondocker
+$ curl -4 http://localhost:4000
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   118  100   118    0     0    139      0 --:--:-- --:--:-- --:--:--   139<h3>Hello World!</h3><b>Hostname:</b> eb5133c0e4dd<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i>
+
+HuanNing@HuanNing MINGW64 /e/pythondocker
+$ curl -4 http://localhost:4000
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   118  100   118    0     0    139      0 --:--:-- --:--:-- --:--:--   139<h3>Hello World!</h3><b>Hostname:</b> eb5133c0e4dd<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i>
+
+HuanNing@HuanNing MINGW64 /e/pythondocker
+$ docker container ls -q
+5edc30661da8
+872baa8e11e4
+7e2d6909ee59
+55fa2e1e8421
+42ff116b7eaa
+eb5133c0e4dd
+
+HuanNing@HuanNing MINGW64 /e/pythondocker
+$ docker container ls -q
+5edc30661da8
+872baa8e11e4
+7e2d6909ee59
+55fa2e1e8421
+42ff116b7eaa
+eb5133c0e4dd
+
+HuanNing@HuanNing MINGW64 /e/pythondocker
+$ docker container ls -q
+5edc30661da8
+872baa8e11e4
+7e2d6909ee59
+55fa2e1e8421
+42ff116b7eaa
+eb5133c0e4dd
+
+HuanNing@HuanNing MINGW64 /e/pythondocker
+$ docker stack ps
+"docker stack ps" requires exactly 1 argument.
+See 'docker stack ps --help'.
+
+Usage:  docker stack ps [OPTIONS] STACK
+
+List the tasks in the stack
+
+HuanNing@HuanNing MINGW64 /e/pythondocker
+$ docker stack ps app
+nothing found in stack: app
+
+HuanNing@HuanNing MINGW64 /e/pythondocker
+$ docker stack ps
+"docker stack ps" requires exactly 1 argument.
+See 'docker stack ps --help'.
+
+Usage:  docker stack ps [OPTIONS] STACK
+
+List the tasks in the stack
+
+HuanNing@HuanNing MINGW64 /e/pythondocker
+$ docker stack ps getstartedlab_web.1
+nothing found in stack: getstartedlab_web.1
+
+HuanNing@HuanNing MINGW64 /e/pythondocker
+$ docker stack rm getstartedlab
+Removing service getstartedlab_web
+Removing network getstartedlab_webnet
+
+HuanNing@HuanNing MINGW64 /e/pythondocker
+$ docker swarm leave --force
+
+```
